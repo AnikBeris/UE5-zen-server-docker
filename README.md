@@ -92,7 +92,85 @@
 
 ---
 
-# Шаг 1: 📌 📦 Установка
+# 📦 Установка
+
+### 1. Создайте директорию для данных
+```bash
+mkdir C:\UE5-zen-server-docker\data
+```
+
+### 2. Переходим в деректорию
+```bash
+cd C:\UE5-zen-server-docker
+```
+
+### 3. Создаём файл `docker-compose.yml`
+```bash
+notepad docker-compose.yml
+```
+
+### 4. Вставь следующий текст в `docker-compose.yml` и сохрани файл:
+
+```yaml
+version: "3.9"
+
+networks:
+  ubuntu_net:
+    driver: bridge
+
+services:
+  ubuntu-xfce:
+    image: ghcr.io/anikberis/ue5-zen-server-docker:zenserver-v5.6.12
+    container_name: ubuntu-xfce-web
+    restart: unless-stopped
+    environment:
+      - VNC_PW=qwe123
+      - VNC_RESOLUTION=1280x720
+      - TZ=Europe/Moscow
+      - VNC_STARTUPFILE=/home/developer/zen-server/vnc_startup.sh
+    volumes:
+      - ./data:/home/developer/zen-server
+    ports:
+      - "6901:6901"   # noVNC (Web UI)
+      - "5901:5901"   # VNC (для клиента)
+      - "8558:8558"   # ZenServer HTTP
+    networks:
+      - ubuntu_net
+
+```
+
+### 5. Запуск контейнера через `docker-compose.yml`
+```bash
+docker-compose up -d
+```
+
+### 6. Проверь запущенные контейнеры:
+```bash
+docker ps
+```
+- Логи:
+
+```bash
+docker-compose logs -f
+```
+
+- Если нужно то остановка контейнера 
+```bash
+docker-compose down
+```
+
+# Дополнительно
+- Чтобы изменить `пароль VNC`, отредактируй `VNC_PW` в `docker-compose.yml` и перезапусти контейнер.
+
+- Порты можно изменить в секции `ports`.
+
+- Данные сохраняются в `data`, не теряются при перезапуске.
+
+---
+
+# 📦 Сборка
+
+### Шаг 1: 📌 Установка
 
 1. Клонируйте репозиторий:
 
