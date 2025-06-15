@@ -1,0 +1,32 @@
+networks:
+  ubuntu_net:
+    driver: bridge
+
+services:
+  ubuntu-xfce:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: ubuntu-vnc-xfce:v5.6.12
+    container_name: ubuntu-xfce-web
+    restart: unless-stopped
+    shm_size: "2gb"  # Увеличиваем размер разделяемой памяти
+    tty: true
+    stdin_open: true
+
+    environment:
+      - VNC_PW=qwe123
+      - VNC_RESOLUTION=1280x720
+      - VNC_COL_DEPTH=24
+      - SHELL=/bin/bash  # Принудительно задаем оболочку
+      - TERM=xterm-256color  # Для цветного терминала
+    volumes:
+      - ./data:/home/developer/zen-server
+    ports:
+      - "6901:6901"   # noVNC (Web UI)
+      - "5901:5901"   # VNC (клиент VNC, если нужно)
+      - "8558:8558"   # ZenServer HTTP
+
+    networks:
+      - ubuntu_net
