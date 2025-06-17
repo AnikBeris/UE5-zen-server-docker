@@ -160,6 +160,70 @@ docker-compose logs -f
 docker-compose down
 ```
 
+# 5. Переходим в окружение
+
+### 1. 
+
+- **noVNC (в браузере):**
+  - - Откройте [http://localhost:6901](http://localhost:6901) или `http://{подставьти IP вашего сервера}:6901`
+  - - Пароль: `qwe123`
+
+### 2. 
+
+- выбираем оболочку 
+  <a>
+    <img src="./media/VNC.png" alt="Image">
+  </a>
+
+### 3. 
+
+- Вводим пароль 
+  - - Пароль: `qwe123`
+  <a>
+    <img src="./media/VNC_2.png" alt="Image" width="700" height="auto">
+  </a>
+
+### 4. 
+
+- открываем терминал
+  <a>
+    <img src="./media/VNC_3.png" alt="Image" width="700" height="auto">
+  </a>
+
+### 5. 
+
+- Переходим в директорию проектов
+```bash
+cd home/developer/zenserver
+```
+
+  <a>
+    <img src="./media/zen-server_2.gif" alt="Image" width="700" height="auto">
+  </a>
+
+---
+
+- Запускаем фаил
+```bash
+./zenserver
+```
+
+  <a>
+    <img src="./media/zen-server_2.gif" alt="Image">
+  </a>
+
+---
+
+- должны увидеть запущеный сервер
+```bash
+./zenserver
+```
+
+  <a>
+    <img src="./media/VNC_5.png" alt="Image">
+  </a>
+
+
 # Дополнительно
 - Чтобы изменить `пароль VNC`, отредактируй `VNC_PW` в `docker-compose.yml` и перезапусти контейнер.
 
@@ -230,7 +294,9 @@ docker compose down
 
 ---
 
-### 📁 Пример docker-compose.yml
+### 🧾Пример Docker Compose
+
+`docker-compose.yml`
 
 ```yaml
 networks:
@@ -331,6 +397,30 @@ WORKDIR /home/developer/zen-server
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
 CMD ["/bin/bash", "-l"]
 ```
+
+---
+# Дополнительно
+
+## ✅ Полезные команды
+
+| Команда                            | Описание                                 |
+|-----------------------------------|------------------------------------------|
+| `docker compose up -d --build`    | Запуск и сборка контейнера                |
+| `docker exec -it ubuntu-xfce-web bash` | Войти в терминал контейнера          |
+| `cdz`                              | Быстрый переход в директорию ZenServer   |
+| `xmake`                            | Сборка проекта                           |
+| `./zenserver`                      | Запуск ZenServer                         |
+| `./zen`                            | Запуск Zen                               |
+
+## ✅ Скачать Zen server
+```bash
+https://github.com/EpicGames/zen
+```
+
+  <a>
+    <img src="./media/zen-server_save_1.gif" alt="Image">
+  </a>
+
 
 ---
 
