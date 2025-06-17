@@ -162,37 +162,30 @@ docker-compose down
 
 # 5. Переходим в окружение
 
-### 1. 
+### 1. переходим в VNC
 
 - **noVNC (в браузере):**
   - - Откройте [http://localhost:6901](http://localhost:6901) или `http://{подставьти IP вашего сервера}:6901`
   - - Пароль: `qwe123`
 
-### 2. 
-
-- выбираем оболочку 
+### 2. выбираем оболочку 
   <a>
     <img src="./media/VNC.png" alt="Image">
   </a>
 
-### 3. 
-
-- Вводим пароль 
+### 3. Вводим пароль 
   - - Пароль: `qwe123`
   <a>
     <img src="./media/VNC_2.png" alt="Image" width="700" height="auto">
   </a>
 
-### 4. 
+### 4. Открываем терминал
 
-- открываем терминал
   <a>
     <img src="./media/VNC_3.png" alt="Image" width="700" height="auto">
   </a>
 
-### 5. 
-
-- Переходим в директорию проектов
+### 5. Переходим в директорию проектов
 ```bash
 cd home/developer/zenserver
 ```
@@ -203,7 +196,7 @@ cd home/developer/zenserver
 
 ---
 
-- Запускаем фаил
+- Запускаем фаил сервера
 ```bash
 ./zenserver
 ```
